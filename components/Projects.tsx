@@ -6,7 +6,18 @@ import ProjectModal from './ProjectModal';
 const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'XREDUCATION',
+    title: '3D image slider',
+    category: 'Fintech / Admin',
+    image: '3D image slider.png',
+    description: 'A clean management dashboard for academic institutions, tracking student metrics and revenue.',
+    longDescription: 'XREDUCATION provides a high-level overview of academic performance. Designed with a focus on usability, it features real-time data visualization using Chart.js and a robust Firebase backend for secure data management.',
+    technologies: ['React', 'Chart.js', 'Tailwind', 'Firebase'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '2',
+    title: 'XREDUCATION Dashboard',
     category: 'Fintech / Admin',
     image: 'https://images.unsplash.com/photo-1551288049-bbda023b88d6?auto=format&fit=crop&q=80&w=800',
     description: 'A clean management dashboard for academic institutions, tracking student metrics and revenue.',
@@ -16,7 +27,7 @@ const PROJECTS: Project[] = [
     githubUrl: '#'
   },
   {
-    id: '2',
+    id: '3',
     title: 'Zest & Co.',
     category: 'E-commerce',
     image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800',
@@ -27,7 +38,62 @@ const PROJECTS: Project[] = [
     githubUrl: '#'
   },
   {
-    id: '3',
+    id: '4',
+    title: 'CAN 2025 Maroc',
+    category: 'Live Sports',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
+    description: 'A sports companion app for tracking the 2025 Africa Cup of Nations with live scores.',
+    longDescription: 'Stay updated with every goal. This application handles high-concurrency real-time data via WebSockets, providing fans with instant notifications and detailed team analytics throughout the tournament.',
+    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '5',
+    title: 'CAN 2025 Maroc',
+    category: 'Live Sports',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
+    description: 'A sports companion app for tracking the 2025 Africa Cup of Nations with live scores.',
+    longDescription: 'Stay updated with every goal. This application handles high-concurrency real-time data via WebSockets, providing fans with instant notifications and detailed team analytics throughout the tournament.',
+    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '6',
+    title: 'CAN 2025 Maroc',
+    category: 'Live Sports',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
+    description: 'A sports companion app for tracking the 2025 Africa Cup of Nations with live scores.',
+    longDescription: 'Stay updated with every goal. This application handles high-concurrency real-time data via WebSockets, providing fans with instant notifications and detailed team analytics throughout the tournament.',
+    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '7',
+    title: 'CAN 2025 Maroc',
+    category: 'Live Sports',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
+    description: 'A sports companion app for tracking the 2025 Africa Cup of Nations with live scores.',
+    longDescription: 'Stay updated with every goal. This application handles high-concurrency real-time data via WebSockets, providing fans with instant notifications and detailed team analytics throughout the tournament.',
+    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '8',
+    title: 'CAN 2025 Maroc',
+    category: 'Live Sports',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
+    description: 'A sports companion app for tracking the 2025 Africa Cup of Nations with live scores.',
+    longDescription: 'Stay updated with every goal. This application handles high-concurrency real-time data via WebSockets, providing fans with instant notifications and detailed team analytics throughout the tournament.',
+    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    liveUrl: '#',
+    githubUrl: '#'
+  },
+  {
+    id: '9',
     title: 'CAN 2025 Maroc',
     category: 'Live Sports',
     image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800',
@@ -48,12 +114,12 @@ const Projects: React.FC = () => {
         <div className="space-y-4">
           <span className="text-prestige-red font-bold text-[10px] uppercase tracking-[0.4em]">Selected Works</span>
           <h2 className="font-sora text-5xl md:text-7xl font-extrabold tracking-tighter text-white">
-            CREATIVE <br /> <span className="text-prestige-gray">SHOWCASE</span>
-          </h2>
+            FEATURED <br /> <span className="text-prestige-gray">PROJECTS</span>
+          </h2>   
         </div>
         <div className="max-w-xs text-right">
           <p className="text-prestige-gray text-sm leading-relaxed">
-            I combine technical excellence with artistic vision to create impactful digital experiences.
+             Full-Stack Developer passionate about building modern web apps that blend performance, design, and user experience.
           </p>
         </div>
       </div>

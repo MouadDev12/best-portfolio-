@@ -47,20 +47,20 @@ const Skills: React.FC = () => {
           </div>
           
           <p className="text-prestige-gray leading-relaxed max-w-md text-lg">
-            Every pixel I place has a purpose. For truly impactful visuals, I follow a narrative that guides the creative process, ensuring the final product resonates with precision and prestige.
+              Driven by precision and purpose, I architect robust, scalable solutions through a disciplined development process — prioritizing clean code, optimal performance, and forward-thinking design at every stage.
           </p>
 
           <div className="flex flex-wrap gap-12 pt-8">
             <div className="group">
-              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">4+</p>
+              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">2+</p>
               <p className="text-[10px] text-prestige-gray uppercase tracking-widest mt-2">Years Crafting Code</p>
             </div>
             <div className="group">
-              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">50+</p>
+              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">4+</p>
               <p className="text-[10px] text-prestige-gray uppercase tracking-widest mt-2">Projects Delivered</p>
             </div>
             <div className="group">
-              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">12</p>
+              <p className="text-5xl font-sora font-extrabold text-white group-hover:text-prestige-red transition-colors">8</p>
               <p className="text-[10px] text-prestige-gray uppercase tracking-widest mt-2">Technologies Mastered</p>
             </div>
           </div>
