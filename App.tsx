@@ -55,35 +55,72 @@ const App: React.FC = () => {
 
   return (
     <>
+      {/* Loading Screen */}
       {isLoading && <LoadingScreen />}
       
+      {/* Main Application Container */}
       <div className={`min-h-screen bg-prestige-black text-white selection:bg-prestige-red/30 transition-opacity duration-1000 blueprint-grid ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-        {/* Dynamic Background Lighting */}
-        <div className="fixed top-[-10%] right-[-10%] w-[800px] h-[800px] bg-prestige-red/5 rounded-full blur-[150px] pointer-events-none"></div>
-        <div className="fixed bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-prestige-red/5 rounded-full blur-[150px] pointer-events-none"></div>
+        
+        {/* Background Effects Layer */}
+        <div className="fixed inset-0 pointer-events-none">
+          {/* Top Right Glow */}
+          <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-prestige-red/5 rounded-full blur-[150px]"></div>
+          {/* Bottom Left Glow */}
+          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-prestige-red/5 rounded-full blur-[150px]"></div>
+        </div>
 
-        {/* Responsive Navigations */}
-        <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
-        <Navbar activeSection={activeSection} onSectionChange={handleSectionChange} />
+        {/* Navigation Layer */}
+        <div className="relative z-20">
+          <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
+          <Navbar activeSection={activeSection} onSectionChange={handleSectionChange} />
+        </div>
 
+        {/* Main Content Layer */}
         <main className="relative z-10 w-full max-w-[1600px] mx-auto border-x border-white/5 bg-prestige-black/50">
-          <Hero 
-            onExploreClick={() => handleSectionChange(Section.Projects)} 
-            onResumeClick={() => setIsCVOpen(true)}
-          />
           
-          <SkillsMarquee />
-          
-          <Skills />
-          <Projects />
-          <Education />
-          <Contact />
-          
+          {/* Hero Section */}
+          <section id="home">
+            <Hero 
+              onExploreClick={() => handleSectionChange(Section.Projects)} 
+              onResumeClick={() => setIsCVOpen(true)}
+            />
+          </section>
+
+          {/* Skills Marquee */}
+          <section>
+            <SkillsMarquee />
+          </section>
+
+          {/* Skills Section */}
+          <section id="skills">
+            <Skills />
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects">
+            <Projects />
+          </section>
+
+          {/* Education Section */}
+          <section id="education">
+            <Education />
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact">
+            <Contact />
+          </section>
+
+          {/* Footer */}
           <Footer onSectionChange={handleSectionChange} />
+
         </main>
       </div>
 
+      {/* Modal Layer */}
       {isCVOpen && <CVModal onClose={() => setIsCVOpen(false)} />}
+      
+      {/* Chatbot Layer */}
       <Chatbot />
     </>
   );
