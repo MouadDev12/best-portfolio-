@@ -66,13 +66,13 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick, onResumeClick }) => {
             {/* Red Overlay Effect */}
             <div className="absolute inset-0 bg-gradient-to-t from-prestige-red/40 via-transparent to-transparent opacity-60"></div>
           </div>
+        </div>
 
-          {/* Signature Overlay */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2">
-            <h1 className="font-signature text-7xl md:text-9xl text-white whitespace-nowrap text-glow-red drop-shadow-2xl select-none">
-              Mouad
-            </h1>
-          </div>
+        {/* Signature Overlay */}
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2">
+          <h1 className="font-signature text-7xl md:text-9xl text-white whitespace-nowrap text-glow-red drop-shadow-2xl select-none">
+            Mouad
+          </h1>
         </div>
 
         {/* Bio Description */}
@@ -85,32 +85,35 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick, onResumeClick }) => {
 
           {/* Social icons */}
           <div className="flex justify-center gap-6">
-            {[{Icon : Github , link : "https://github.com/MouadDev12"}, {Icon : Linkedin , link : "https://www.linkedin.com/in/mouad-mekrech-5b1057330/"}, {Icon : Instagram , link : "https://www.instagram.com/itzme.mouad/"}].map(({Icon , link}, idx) => (
+            {[
+              {Icon: Github, link: "https://github.com/MouadDev12"}, 
+              {Icon: Linkedin, link: "https://www.linkedin.com/in/mouad-mekrech-5b1057330/"}, 
+              {Icon: Instagram, link: "https://www.instagram.com/itzme.mouad/"}
+            ].map(({Icon, link}, idx) => (
               <a key={idx} href={link} target="_Blank" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-prestige-gray hover:text-prestige-red hover:border-prestige-red transition-all">
-
                 <Icon size={18} />
               </a>
             ))}
           </div>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button 
-              onClick={onExploreClick}
-              className="group flex items-center gap-4 px-8 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all"
-            >
-              <span className="font-sora font-bold text-sm uppercase tracking-widest">Start a Project</span>
-              <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                <ArrowUpRight size={18} />
-              </div>
-            </button>
-            <button 
-              onClick={onResumeClick}
-              className="px-8 py-3 rounded-full border border-white/10 text-prestige-gray hover:text-white transition-all text-sm uppercase tracking-widest font-bold"
-            >
-              Resume CV
-            </button>
-          </div>
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <button 
+            onClick={onExploreClick}
+            className="group flex items-center gap-4 px-8 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all"
+          >
+            <span className="font-sora font-bold text-sm uppercase tracking-widest">Start a Project</span>
+            <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+              <ArrowUpRight size={18} />
+            </div>
+          </button>
+          <button 
+            onClick={onResumeClick}
+            className="px-8 py-3 rounded-full border border-white/10 text-prestige-gray hover:text-white transition-all text-sm uppercase tracking-widest font-bold"
+          >
+            Resume CV
+          </button>
         </div>
       </div>
 
@@ -118,7 +121,6 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick, onResumeClick }) => {
       <div className="absolute top-0 bottom-0 left-1/4 border-l border-white/5"></div>
       <div className="absolute top-0 bottom-0 right-1/4 border-l border-white/5"></div>
       <div className="absolute left-0 right-0 top-1/2 border-t border-white/5"></div>
-
     </section>
   );
 };

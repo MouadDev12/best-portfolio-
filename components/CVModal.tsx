@@ -11,6 +11,120 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
     window.print();
   };
 
+  const handleDownloadPDF = () => {
+    // Create a professional CV content as text
+    const cvContent = `
+MOUAD MEKRECH
+Développeur Web Full-Stack
+===============================================
+
+CONTACT
+• Email: mouadmekrech12@gmail.com
+• Téléphone: +212 768-636308
+• LinkedIn: linkedin.com/in/mouad-mekrech
+• GitHub: github.com/mouad-mekrech
+• Localisation: Ait Melloul, Maroc
+
+PROFIL
+Développeur Full-Stack stagiaire à l'ISTA Ait Melloul, spécialisé en technologies web modernes.
+Actuellement à la recherche d'un stage pour mettre en pratique mes compétences et contribuer à des projets professionnels.
+
+FORMATION
+• TECHNICIEN SPÉCIALISÉ EN DÉVELOPPEMENT WEB
+  ISTA AIT MELLOU | 2024 - Présent
+  Formation spécialisée en développement web avec focus sur React, Node.js, bases de données et technologies modernes.
+
+• TECHNICIEN DESSINATEUR BÂTIMENT
+  ISTA INZEGANE | 2022 - 2024
+  Formation en dessin technique et architecture avec ArchiCAD et AutoCAD.
+
+• FORMATION QUALIFIANTE MÉTREUR
+  ISTA TASSILA | 2021 - 2022
+  Formation spécialisée en métrage et topographie.
+
+• BACCALAURÉAT SCIENCE VIE ET TERRE
+  Lycée Qualifiante Essafa | 2019 - 2020
+  Baccalauréat scientifique spécialité Sciences de la Vie et de la Terre.
+
+COMPÉTENCES TECHNIQUES
+Développement:
+• HTML5 / CSS3
+• JavaScript
+• Bootstrap / Tailwind
+• React.js / Redux
+• PHP / MySQL
+
+Outils & Bases:
+• MySQL
+• Figma UI/UX
+• Git et GitHub
+
+LANGUES
+• ARABE: LANGUE MATERNELLE
+• FRANÇAIS: COURANT
+• ANGLAIS: INTERMÉDIAIRE
+
+LOISIRS
+• Basketball
+• Aikido
+• Music
+
+EXPÉRIENCE PROFESSIONNELLE
+• DESSINATEUR BÂTIMENT; ARCHICAD (2D ET 3D)
+  ARCHITECTE U.N.P.L, INZEGANE | 01-03-2024 — 31-03-2024
+  Modélisation de projets architecturaux sur ARCHICAD en 2D et 3D.
+  Réalisation de plans d'étage, coupes et façades.
+  Export de documents PDF, DWG et IFC pour coordination technique.
+
+• MÉTREUR : AUTOCAD
+  CABINET BOULMERS, AIT MELLOU | 20-06-2022 — 16-07-2022
+  Participation aux travaux topographiques sur le terrain.
+  Mise au net de plans topographiques sur AutoCAD à partir de levés terrain.
+
+PROJETS RÉALISÉS
+• XREDUCATION Dashboard
+  Admin Dashboard / EdTech
+  Dashboard éducatif moderne pour monitorer étudiants, performance et revenus avec Chart.js et Firebase.
+  Démo: https://xreducation-dashboard.vercel.app/
+
+• Zest & Co.
+  E-commerce / Brand Website
+  Plateforme e-commerce premium pour boissons artisanales avec animations fluides et checkout optimisé.
+  Démo: https://healthy-drink-shop.vercel.app/
+
+• Gestion Stagiaires
+  Management System / Education
+  Système complet de gestion des stagiaires avec React, Redux Toolkit et interface responsive.
+  Démo: https://gestionstagiaire.vercel.app/
+
+• Gestion Bibliothèque
+  Management System / Education
+  Système de gestion bibliothèque avec inventaire livres, suivi emprunts et interface utilisateur.
+  Démo: https://gestionlivres.vercel.app/
+
+• NeoTech Shop
+  E-commerce / Electronics Platform
+  Plateforme e-commerce moderne pour produits électroniques avec UI/UX moderne et dark mode.
+  Démo: https://myshop-react-nu.vercel.app/
+    `;
+
+    // Create a blob with the CV content
+    const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'MOUAD_MEKRECH_CV.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    // Also trigger print dialog for PDF option
+    setTimeout(() => {
+      window.print();
+    }, 500);
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
       {/* Backdrop */}
@@ -22,14 +136,19 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
         <div className="bg-slate-50 border-b p-4 flex justify-between items-center no-print shrink-0">
           <div className="flex items-center gap-4">
             <h2 className="font-sora font-bold text-slate-700 text-sm md:text-base">MOUAD_MEKRECH_CV.pdf</h2>
-            <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-bold">PROFESSIONAL</span>
           </div>
           <div className="flex items-center gap-2">
+            <button 
+              onClick={handleDownloadPDF}
+              className="p-2 hover:bg-slate-200 rounded-full transition-colors text-slate-600 flex items-center gap-2 px-3 text-xs font-bold"
+            >
+              <Download size={16} /> <span className="hidden sm:inline">Download CV</span>
+            </button>
             <button 
               onClick={handlePrint}
               className="p-2 hover:bg-slate-200 rounded-full transition-colors text-slate-600 flex items-center gap-2 px-3 text-xs font-bold"
             >
-              <Printer size={16} /> <span className="hidden sm:inline">Print / PDF</span>
+              <Printer size={16} /> <span className="hidden sm:inline">Print PDF</span>
             </button>
             <button 
               onClick={onClose}
@@ -49,11 +168,11 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
               <div className="flex gap-6">
                 <div className="w-24 h-32 md:w-32 md:h-40 rounded bg-slate-100 border overflow-hidden shrink-0">
                   <img 
-                    src="https://media.licdn.com/dms/image/v2/D4E03AQF4O3F9z9-fXQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715444853037?e=1746057600&v=beta&t=U3ZJb6nF0V9Y7w-p7vYV-k-j-U-Y-v-q-Z-q-Y-j-V-k" 
+                    src="/images/mouad.png" 
                     alt="Mouad Mekrech" 
                     className="w-full h-full object-cover object-top"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://picsum.photos/seed/mouad/600/800";
+                      (e.target as HTMLImageElement).src = "/images/mouad.png";
                     }}
                   />
                 </div>
@@ -144,9 +263,8 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
                 <section>
                   <h3 className="text-lg font-black uppercase border-b border-slate-300 mb-4 pb-1">Profil</h3>
                   <p className="text-xs leading-relaxed text-slate-600">
-                    Développeur Full-Stack passionné par la création de produits numériques modernes et évolutifs. 
-                    Actuellement étudiant à l'ISTA AIT MELLOUL, spécialisé dans les technologies web de pointe 
-                    et les solutions innovantes.
+                   Développeur Full-Stack stagiaire à l’ISTA Ait Melloul, spécialisé en technologies web modernes. 
+                   Actuellement à la recherche d’un stage pour mettre en pratique mes compétences et contribuer à des projets professionnels.
                   </p>
                 </section>
 
@@ -174,28 +292,71 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
                 </section>
 
                 <section>
-                  <h3 className="text-lg font-black uppercase border-b border-slate-300 mb-4 pb-1">Projets</h3>
-                  <div className="space-y-6">
+                  <h3 className="text-lg font-black uppercase border-b border-slate-300 mb-4 pb-1">Projets Réalisés</h3>
+                  <div className="space-y-4">
                     <div>
-                      <h4 className="font-black text-sm uppercase decoration-[#3FA9FF] decoration-2 underline underline-offset-4 mb-2">XREDUCATION DASHBOARD</h4>
+                      <h4 className="font-black text-sm uppercase">XREDUCATION Dashboard</h4>
+                      <p className="text-[10px] font-bold text-slate-500 mb-1">Admin Dashboard / EdTech</p>
                       <p className="text-xs text-slate-600 mb-2">
-                        Plateforme d'administration éducative moderne développée pour gérer cours, étudiants, revenus et statistiques.
+                        Dashboard éducatif moderne pour monitorer étudiants, performance et revenus avec Chart.js et Firebase.
                       </p>
-                      <p className="text-[9px] font-black text-slate-400">TECH: HTML5 / CSS3 / JAVASCRIPT / FIGMA</p>
+                      <p className="text-[10px] font-bold text-blue-600">
+                        <a href="https://xreducation-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          xreducation-dashboard.vercel.app
+                        </a>
+                      </p>
                     </div>
+                    
                     <div>
-                      <h4 className="font-black text-sm uppercase decoration-[#3FA9FF] decoration-2 underline underline-offset-4 mb-2">ZEST & CO. — PREMIUM DRINKS</h4>
+                      <h4 className="font-black text-sm uppercase">Zest & Co.</h4>
+                      <p className="text-[10px] font-bold text-slate-500 mb-1">E-commerce / Brand Website</p>
                       <p className="text-xs text-slate-600 mb-2">
-                        Site interactif dédié à la vente de boissons artisanales.
+                        Plateforme e-commerce premium pour boissons artisanales avec animations fluides et checkout optimisé.
                       </p>
-                      <p className="text-[9px] font-black text-slate-400">TECH: REACT / JAVASCRIPT / HTML5 / CSS3 / FONT AWESOME</p>
+                      <p className="text-[10px] font-bold text-blue-600">
+                        <a href="https://healthy-drink-shop.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          healthy-drink-shop.vercel.app
+                        </a>
+                      </p>
                     </div>
+                    
                     <div>
-                      <h4 className="font-black text-sm uppercase decoration-[#3FA9FF] decoration-2 underline underline-offset-4 mb-2">CAN 2025 — APP WEB</h4>
+                      <h4 className="font-black text-sm uppercase">Gestion Stagiaires</h4>
+                      <p className="text-[10px] font-bold text-slate-500 mb-1">Management System / Education</p>
                       <p className="text-xs text-slate-600 mb-2">
-                        Application responsive pour suivre la Coupe d'Afrique des Nations 2025.
+                        Système complet de gestion des stagiaires avec React, Redux Toolkit et interface responsive.
                       </p>
-                      <p className="text-[9px] font-black text-slate-400">TECH: REACT / REDUX TOOLKIT / CSS3 / REACT ROUTER</p>
+                      <p className="text-[10px] font-bold text-blue-600">
+                        <a href="https://gestionstagiaire.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          gestionstagiaire.vercel.app
+                        </a>
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-black text-sm uppercase">Gestion Bibliothèque</h4>
+                      <p className="text-[10px] font-bold text-slate-500 mb-1">Management System / Education</p>
+                      <p className="text-xs text-slate-600 mb-2">
+                        Système de gestion bibliothèque avec inventaire livres, suivi emprunts et interface utilisateur.
+                      </p>
+                      <p className="text-[10px] font-bold text-blue-600">
+                        <a href="https://gestionlivres.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          gestionlivres.vercel.app
+                        </a>
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-black text-sm uppercase">NeoTech Shop</h4>
+                      <p className="text-[10px] font-bold text-slate-500 mb-1">E-commerce / Electronics Platform</p>
+                      <p className="text-xs text-slate-600 mb-2">
+                        Plateforme e-commerce moderne pour produits électroniques avec UI/UX moderne et dark mode.
+                      </p>
+                      <p className="text-[10px] font-bold text-blue-600">
+                        <a href="https://myshop-react-nu.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          myshop-react-nu.vercel.app
+                        </a>
+                      </p>
                     </div>
                   </div>
                 </section>
@@ -213,6 +374,14 @@ const CVModal: React.FC<CVModalProps> = ({ onClose }) => {
                   width: 100% !important;
                 }
                 .no-print { display: none !important; }
+              }
+              
+              /* Additional print styles to ensure content is visible */
+              @media print and (color) {
+                * {
+                  -webkit-print-color-adjust: exact !important;
+                  print-color-adjust: exact !important;
+                }
               }
             `}} />
           </div>

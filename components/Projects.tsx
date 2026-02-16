@@ -12,8 +12,8 @@ const PROJECTS: Project[] = [
     image: '/images/XREDUCATION Dashboard.png',
     logo: '/images/XREDUCATION Dashboard.png',
     description:'Modern admin dashboard designed for educational institutions to monitor students, performance, and revenue.',
-    longDescription:'XREDUCATION is a professional EdTech dashboard focused on clarity and efficiency. It provides real-time insights into student enrollment, financial performance, and academic metrics. Built with scalable architecture and interactive data visualizations, the platform ensures secure data handling and an intuitive user experience for administrators.',
-    technologies: ['React', 'Chart.js', 'Tailwind', 'Firebase'],
+    longDescription:'XREDUCATION is a professional EdTech dashboard focused on clarity and efficiency. It provides real-time insights into student enrollment, financial performance, and academic metrics. Built with scalable architecture and interactive data visualizations, platform ensures secure data handling and an intuitive user experience for administrators.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Chart.js','Animations Fluides', 'Export de données','Thème Sombre/Clair','Responsive Design' ],
     liveUrl: 'https://xreducation-dashboard.vercel.app/',
     githubUrl: 'https://github.com/MouadDev12/Xreducation-Dashboard'
   },
@@ -25,24 +25,22 @@ const PROJECTS: Project[] = [
     logo: '/images/Zest and co.png',
     description:'Premium e-commerce website showcasing artisanal beverages with a smooth and engaging shopping experience.',
     longDescription:'Zest & Co. is a high-end e-commerce platform designed to elevate brand identity and maximize conversions. The website features refined animations, a clean product layout, and a frictionless checkout flow. Every interaction is crafted to feel premium while remaining fast, responsive, and accessible across all devices.',
-    technologies: ['React', 'Framer Motion', 'Node.js', 'Stripe'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Animations et transitions', 'Font Awesome ', 'Google Fonts' ,'Responsive Design'],
     liveUrl: 'https://healthy-drink-shop.vercel.app/',
     githubUrl: 'https://github.com/MouadDev12/Healthy-Drink-Shop'
   },
-  {
-  id: '3',
-  title: 'Gestion Stagiaire',
-  category: 'Educational / Interactive Web Application',
-  image: '/images/code-quiz.png',
-  logo: '/images/codequiz-logo.png',
-  description:
-    'Interactive quiz application designed to help users test and improve their programming knowledge in a fun and engaging way.',
-  longDescription:
-    'CodeQuiz is an educational web application focused on interactive learning. It allows users to answer dynamic quiz questions with instant feedback, score tracking, and a responsive user interface. The project emphasizes usability, clean architecture, and an engaging learning experience, making it ideal for students and self-learners in web development.',
-  technologies: ['React', 'Context API', 'JavaScript', 'CSS3', 'Responsive Design'],
-  liveUrl: 'https://codequiz.vercel.app/',
-  githubUrl: 'https://github.com/MouadDev12/CodeQuiz'
-}
+   {
+    id: '3',
+    title: 'Système de gestion des stagiaires',
+    category: 'Management System / Education & HR',
+    image: '/images/gestion_stagiaire.png',
+    logo: '/images/Gestion Bibliothéque.png',
+    description: 'A professional trainee management system designed to efficiently organize, track, and manage interns within educational or corporate environments.',
+    longDescription:'The Trainee Management System is a complete web application built to streamline management of interns in educational institutions and organizations. It allows administrators to add, edit, and monitor trainee profiles, filter data by department or status, and export information in structured formats. The interface focuses on clarity, usability, and responsiveness, ensuring a smooth experience across desktop and mobile devices. This project demonstrates practical management workflows, clean UI design, and real-world application structure.',
+    technologies: ['React', 'React Router DOM', 'React Hook Form', 'Redux Toolkit ', 'ESLint', 'Tailwind'],
+    liveUrl: 'https://gestionstagiaire.vercel.app/',
+    githubUrl: 'https://github.com/MouadDev12/gestion_stagiaire'
+  },
   {
     id: '4',
     title: 'Gestion Bibliothéque',
@@ -51,21 +49,21 @@ const PROJECTS: Project[] = [
     logo: '/images/Gestion Bibliothéque.png',
     description: 'Library management system for handling books, users, and borrowing operations efficiently.',
     longDescription:'Gestion Bibliothèque is a complete management system built to simplify library operations. It allows administrators to manage book inventories, track borrowings, and organize users through a clean and functional interface. The system is optimized for usability, performance, and scalability in educational environments.',
-    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    technologies: ['React.js', 'Redux Toolkit', 'Vite', 'CSS3','LocalStorage','ESLint ', 'Responsive Design'],
     liveUrl: 'https://gestionlivres.vercel.app/',
     githubUrl: 'https://github.com/MouadDev12/gestionlivres'
   },
   {
     id: '5',
-    title: 'Nike Store',
-    category: 'E-commerce / Product Landing',
-    image: '/images/Nike Store.png',
-    logo: '/images/Nike Store.png',
-    description:'Modern product-focused e-commerce experience inspired by Nike’s branding and visual identity.',
-    longDescription: 'Nike Store is a sleek e-commerce interface designed to emphasize products through bold visuals and clean layouts. The project focuses on brand consistency, responsive design, and an optimized user journey from product discovery to checkout.',
-    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: 'NeoTech Shop',
+    category: 'E-commerce / Electronics Platform',
+    image: '/images/my_shop.png',
+    logo: '/images/my_shop.png',
+    description:'A modern e-commerce platform focused on showcasing electronic products with a clean, intuitive, and conversion-oriented design.',
+    longDescription:'NeoTech Shop is a sleek e-commerce platform designed to highlight electronic products through bold visuals and intuitive layouts. The project emphasizes brand identity, responsive design, and a smooth user journey from product discovery to checkout.',
+    technologies: ['Modern UI/UX', 'Dark Mode', 'React.js','TailwindCSS3','Framer Motion', ' React Icons', 'React Roter DOM', 'Context API', 'Responsive Design'],
+    liveUrl: 'https://myshop-react-nu.vercel.app/',
+    githubUrl: 'https://github.com/MouadDev12/myshop-react'
   },
   {
     id: '6',
@@ -73,9 +71,9 @@ const PROJECTS: Project[] = [
     category: 'Live Sports / Web Application',
     image: '/images/can afrique.png',
     logo: '/images/can afrique.png',
-    description:'Real-time web application for following the Africa Cup of Nations with live scores, fixtures, and team standings.', 
+    description:'Real-time web application for following Africa Cup of Nations with live scores, fixtures, and team standings.', 
     longDescription: 'This CAN web application provides real-time match updates, live scores, and tournament standings for football fans. Built with a performance-focused architecture, it leverages WebSockets for instant data updates and delivers a smooth, responsive experience across devices. The project emphasizes scalability, real-time interaction, and clean UI for an engaging sports-tracking experience.',   
-    technologies: ['Next.js', 'WebSockets', 'Prisma', 'Tailwind'],
+    technologies: ['React', 'Redux Toolkit', 'React Router', 'CSS3','ESLint ', 'Vite','Design responsive' ,' Interface moderne '],
     liveUrl: 'https://coupe-afrique-can-2025.vercel.app/',
     githubUrl: 'https://github.com/MouadDev12/coupe_afrique-can-2025'
   },
