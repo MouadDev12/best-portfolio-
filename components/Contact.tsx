@@ -1,7 +1,28 @@
-import React from 'react';
-import { Send, Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, Mail, MapPin, Phone, ArrowRight, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const recipient = 'mouadmekrech1@gmail.com';
+    const subject = encodeURIComponent(`Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`,
+      '_blank'
+    );
+    setSent(true);
+    setName('');
+    setEmail('');
+    setMessage('');
+    setTimeout(() => setSent(false), 5000);
+  };
+
   return (
     <section id="contact" className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="mb-24 text-center space-y-4">
@@ -28,7 +49,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[10px] text-prestige-gray uppercase tracking-[0.2em] font-bold mb-1">Email</div>
-                  <div className="text-white font-bold text-base md:text-lg tracking-tight">mouadmekrech12@gmail.com</div>
+                  <div className="text-white font-bold text-base md:text-lg tracking-tight">mouadmekrech1@gmail.com</div>
                 </div>
               </div>
 
@@ -67,12 +88,15 @@ const Contact: React.FC = () => {
 
         {/* Contact Form */}
         <div className="lg:col-span-3">
-          <form className="glass-panel p-10 md:p-14 rounded-prestige space-y-10">
+          <form onSubmit={handleSubmit} className="glass-panel p-10 md:p-14 rounded-prestige space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-3">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-prestige-gray font-bold ml-1">Full Name</label>
                 <input 
-                  type="text" 
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white outline-none focus:border-prestige-red transition-all font-medium placeholder:text-white/20"
                   placeholder="Enter your name"
                 />
@@ -80,7 +104,10 @@ const Contact: React.FC = () => {
               <div className="space-y-3">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-prestige-gray font-bold ml-1">Email Address</label>
                 <input 
-                  type="email" 
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white outline-none focus:border-prestige-red transition-all font-medium placeholder:text-white/20"
                   placeholder="name@email.com"
                 />
@@ -91,17 +118,29 @@ const Contact: React.FC = () => {
               <label className="text-[10px] uppercase tracking-[0.2em] text-prestige-gray font-bold ml-1">Message</label>
               <textarea 
                 rows={6}
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white outline-none focus:border-prestige-red transition-all font-medium resize-none placeholder:text-white/20"
                 placeholder="Briefly describe your project goals..."
               ></textarea>
             </div>
 
-            <button className="w-full py-5 rounded-full bg-white text-prestige-black font-extrabold flex items-center justify-center gap-3 hover:bg-prestige-red hover:text-white transition-all shadow-xl hover:shadow-prestige-red/30 group">
+            <button type="submit" className="w-full py-5 rounded-full bg-white text-prestige-black font-extrabold flex items-center justify-center gap-3 hover:bg-prestige-red hover:text-white transition-all shadow-xl hover:shadow-prestige-red/30 group">
               Send Message 
               <div className="w-8 h-8 rounded-full bg-prestige-black text-white flex items-center justify-center group-hover:bg-white group-hover:text-prestige-black transition-all">
                 <ArrowRight size={18} />
               </div>
             </button>
+
+            {sent && (
+              <div className="flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-green-500/10 border border-green-500/20 animate-fade-in">
+                <CheckCircle size={22} className="text-green-400" />
+                <span className="text-green-400 font-bold text-sm tracking-wide">
+                  Message sent successfully!
+                </span>
+              </div>
+            )}
           </form>
         </div>
       </div>

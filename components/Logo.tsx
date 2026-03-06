@@ -15,81 +15,112 @@ const Logo: React.FC<LogoProps> = ({ className = "w-full h-full", glow = true })
       className={className}
     >
       <defs>
-        <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FF3E3E" />
-          <stop offset="100%" stopColor="#8B0000" />
+        <linearGradient id="logoRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF4444" />
+          <stop offset="50%" stopColor="#DC2626" />
+          <stop offset="100%" stopColor="#991B1B" />
         </linearGradient>
-        <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#1A1A1A" />
-          <stop offset="100%" stopColor="#0A0A0A" />
+        <linearGradient id="logoDarkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#1C1C1C" />
+          <stop offset="100%" stopColor="#0D0D0D" />
         </linearGradient>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <linearGradient id="logoShineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.15" />
+          <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0" />
+        </linearGradient>
+        <filter id="logoGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
           <feMerge>
-            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="blur"/>
             <feMergeNode in="SourceGraphic"/>
           </feMerge>
         </filter>
+        <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#DC2626" floodOpacity="0.3"/>
+        </filter>
+        <clipPath id="hexClip">
+          <polygon points="50,3 93,27 93,73 50,97 7,73 7,27" />
+        </clipPath>
       </defs>
 
-      {/* Background hexagon shape */}
+      {/* Outer hexagon - border with shadow */}
+      <g filter={glow ? "url(#logoShadow)" : undefined}>
+        <polygon 
+          points="50,3 93,27 93,73 50,97 7,73 7,27" 
+          fill="url(#logoDarkGrad)"
+          stroke="url(#logoRedGrad)"
+          strokeWidth="1.8"
+        />
+      </g>
+
+      {/* Subtle shine overlay */}
       <polygon 
-        points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" 
-        fill="url(#darkGradient)"
-        stroke="url(#redGradient)"
-        strokeWidth="2"
+        points="50,3 93,27 93,73 50,97 7,73 7,27" 
+        fill="url(#logoShineGrad)"
       />
 
-      {/* Inner geometric frame */}
+      {/* Inner hexagon outline */}
       <polygon 
-        points="50,15 80,32.5 80,67.5 50,85 20,67.5 20,32.5" 
+        points="50,14 82,32 82,68 50,86 18,68 18,32" 
         fill="none"
-        stroke="#FF3E3E"
-        strokeWidth="0.5"
-        opacity="0.3"
+        stroke="#FF4444"
+        strokeWidth="0.4"
+        opacity="0.2"
       />
 
-      {/* Stylized M letter - modern geometric */}
-      <g filter={glow ? "url(#glow)" : undefined}>
-        {/* Left stroke of M */}
+      {/* Stylized M - premium geometric lettermark */}
+      <g filter={glow ? "url(#logoGlow)" : undefined}>
+        {/* Left vertical of M */}
         <path 
-          d="M28 70V35L40 50" 
+          d="M27 72L27 36" 
           stroke="#FFFFFF" 
-          strokeWidth="4" 
+          strokeWidth="5" 
+          strokeLinecap="round"
+        />
+        {/* Left diagonal of M */}
+        <path 
+          d="M27 36L50 56" 
+          stroke="#FFFFFF" 
+          strokeWidth="5" 
           strokeLinecap="round" 
           strokeLinejoin="round"
-          fill="none"
         />
-        {/* Middle peak of M */}
+        {/* Right diagonal of M */}
         <path 
-          d="M40 50L50 35L60 50" 
-          stroke="url(#redGradient)" 
-          strokeWidth="4" 
+          d="M50 56L73 36" 
+          stroke="#FFFFFF" 
+          strokeWidth="5" 
           strokeLinecap="round" 
           strokeLinejoin="round"
-          fill="none"
         />
-        {/* Right stroke of M */}
+        {/* Right vertical of M */}
         <path 
-          d="M60 50L72 35V70" 
+          d="M73 36L73 72" 
           stroke="#FFFFFF" 
-          strokeWidth="4" 
+          strokeWidth="5" 
+          strokeLinecap="round"
+        />
+        {/* Red accent - center diamond peak */}
+        <path 
+          d="M42 46L50 56L58 46" 
+          stroke="url(#logoRedGrad)" 
+          strokeWidth="2.5" 
           strokeLinecap="round" 
           strokeLinejoin="round"
           fill="none"
         />
       </g>
 
-      {/* Accent dot */}
-      <circle cx="50" cy="25" r="3" fill="#FF3E3E">
-        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-      </circle>
+      {/* Top red accent bar */}
+      <line x1="40" y1="24" x2="60" y2="24" stroke="url(#logoRedGrad)" strokeWidth="2" strokeLinecap="round" />
 
-      {/* Corner accents */}
-      <line x1="15" y1="30" x2="20" y2="35" stroke="#FF3E3E" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-      <line x1="85" y1="30" x2="80" y2="35" stroke="#FF3E3E" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-      <line x1="15" y1="70" x2="20" y2="65" stroke="#FF3E3E" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-      <line x1="85" y1="70" x2="80" y2="65" stroke="#FF3E3E" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+      {/* Bottom red accent bar */}
+      <line x1="40" y1="82" x2="60" y2="82" stroke="url(#logoRedGrad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.4" />
+
+      {/* Corner detail marks */}
+      <circle cx="50" cy="24" r="1.5" fill="#FF4444" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite" />
+      </circle>
     </svg>
   );
 };
